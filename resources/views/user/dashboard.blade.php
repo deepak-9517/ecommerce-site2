@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>this is user dashboard</h1>
+    <h1>{{Auth::user()}}</h1>
 </body>
 </html>

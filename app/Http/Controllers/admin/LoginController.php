@@ -22,7 +22,7 @@ class LoginController extends Controller
             'email'=>'required',
             'password'=>'required'
         ]);
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])){
                 return redirect()->route('admin.dashboard');
         }else{
             session()->flash('error','Please Enter Valid email & password');
@@ -31,7 +31,7 @@ class LoginController extends Controller
     }
 
         public function logout(){
-             Auth::logout();
+             Auth::guard('admin')->logout();
              session()->flash('success','Logout Successfully');
             return redirect()->route('admin.login');
         }

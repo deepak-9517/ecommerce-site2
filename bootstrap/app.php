@@ -14,9 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'auth'=>AdminAuthenticate::class,
-            'guest'=>RedirectAuthenticate::class,
+            'admin.auth'=>AdminAuthenticate::class,
+            'admin.guest'=>RedirectAuthenticate::class,
         ]);
+        // $middleware->redirectTo(
+        //     guests:'user/login',
+        //     users:'user/dashboard',
+        // );
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
